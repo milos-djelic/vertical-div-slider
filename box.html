@@ -1,0 +1,124 @@
+<html>
+<head>
+<script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+<style>
+#box
+{
+	height:300px;
+	width:400px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	overflow:hidden;
+	border: 2px solid lightgray;
+
+	
+
+}
+
+#box > div
+{
+	height:300px;
+	width:400px;
+	
+	text-align: center;
+	display:none;
+	position:absolute;
+	top:-300px;
+	font-family: Verdana;
+	font-size:230px;
+	color:white;
+	font-weight: bold;
+	
+}
+
+#buttons
+{
+	height: 30px;
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	text-align: center;
+	
+	
+}
+#buttons > div
+{
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	height: 10px;
+	width: 10px;
+	display: inline-block;
+	border:1px solid lightgray;
+	
+	
+	
+}
+
+	
+
+
+</style>
+<div id="box">
+	<div style="background:#dd5"> 1 </div>
+	<div style="background:#5dd"> 2 </div>
+	<div style="background:#d88"> 3 </div>
+	<div style="background:#55d"> 4 </div>
+</div>
+
+<div id="buttons">
+	<div>&nbsp;</div>
+	<div>&nbsp;</div>
+	<div>&nbsp;</div>
+	<div>&nbsp;</div>
+</div>
+
+
+
+<script>
+	
+	var counter = 0
+		numberOfChildren = $('#box').children().length
+		interval = 3000;
+
+
+	function rotateDiv()
+	{
+		
+		$('#buttons').children().css('background', 'none');
+		$('#buttons').children().eq(counter).css('background', 'darkgray');
+		
+		
+		
+		$('#box').children('div').css('display','none').css('top', '-300px');
+		$('#box').children().eq(counter).css('display', 'block');
+		$('#box').children().eq(counter).animate({top: '+=300'});
+		$('#box').children().eq(counter).delay(2100).animate({top: '+=300'});
+		
+		
+		
+		counter++;
+		counter%=numberOfChildren;
+		console.log(counter);
+		
+	}
+
+
+	function functionDelay()
+	{ 
+		rotateDiv();		
+	}
+
+	(function(){
+		
+		functionDelay();
+		setInterval(functionDelay, interval);
+	})();
+
+</script>
+</body>
+</html>
