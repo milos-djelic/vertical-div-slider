@@ -1,0 +1,47 @@
+#box
+{
+	height:300px;
+	width:400px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	overflow:hidden;
+	border: 2px solid lightgray;
+}
+
+#box > div
+{
+	height:300px;
+	width:400px;
+
+	text-align: center;
+	display:none;
+	position:absolute;
+	top:-300px;
+	font-family: Verdana;
+	font-size:230px;
+	color:white;
+	font-weight: bold;
+}
+
+#buttons
+{
+	height: 30px;
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	text-align: center;
+	margin-top : 10px;
+}
+
+#buttons > div
+{
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+
+	height: 10px;
+	width: 10px;
+	display: inline-block;
+	border:1px solid lightgray;
+}
