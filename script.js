@@ -5,33 +5,36 @@ var delay = 900; // offset for gray circles
 var height;
 
 var initDivs = function() {
-	numberOfChildren = $('#box').children().length;
-	height = $("#box").height();
+	var box = $("#box");
+	numberOfChildren = box.children().length;
+	height = box.height();
 	createButtons();
 	rotateDiv();
 	setInterval(rotateDiv, interval);	
-	
 };
 
 var rotateDiv = function() {
-		$('#buttons').children().css('background', 'none');
-		$('#buttons').children().eq(counter).css('background', 'darkgray');
+		$('#buttons').children().css('background', 'none')
+			     .eq(counter).css('background', 'darkgray');
+			    
+		var box = $('#box');
+		var currentChild = box.children().eq(counter);
+		
+		box.children('div').css('display','none').css('top', '-' + height + 'px');
+		currentChild.css('display', 'block')
+			    .animate({top: '+=' + height})
+			    .delay(interval - delay).animate({top: '+=' + height});
 
-		$('#box').children('div').css('display','none').css('top', '-' + height + 'px');
-		$('#box').children().eq(counter).css('display', 'block');
-		$('#box').children().eq(counter).animate({top: '+=' + height});
-		$('#box').children().eq(counter).delay(interval - delay).animate({top: '+=' + height});
-
-		counter++;
-		counter%=numberOfChildren;
+		counter += 1;
+		counter %= numberOfChildren;
 };
 
 var createButtons = function() {
 	for (var i = 0; i < numberOfChildren; i += 1) {
 	
-		var newDiv = document.createElement('div');
-		document.getElementById("buttons").appendChild(newDiv);		
-		document.getElementById("buttons").innerHTML += (" ");
+		var buttons = $("#buttons");	
+		buttons.append($('<div/>')).html();
+		buttons.html(buttons.html() + ' ');
 	}
 }
 
